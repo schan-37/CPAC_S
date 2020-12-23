@@ -63,6 +63,7 @@
                 <a-cursor>
 
                 </a-cursor>
+
                 <a-text value="score"
                     position="1.1 1.15 -2"
                     color="#000000">
@@ -71,25 +72,35 @@
                     
                 </a-text>
 
-                <a-text value="total"
-                    position="1.0 0.85 -2"
+                <a-text value="0"
+                    id="my_text"
+                    position="1.75 1.15 -2"
                     color="#000000">
-                    <!-- negate="false"> -->
-                    <!-- font="custom-msdf.json" -->
+
+                </a-text>
+
+                <!--なぜか表示されない
+                <a-text value="スコア"
+                    position="1.1 1.15 -2"
+                    negate="false"
+                    color="#000000"
+                    font="custom-msdf.json">
                     
                 </a-text>
 
-                <a-text value="0"
-                    id="my_text1"
-                    position="1.5 0.85 -2"
-                    color="#000000">
-
+                
+                <a-text value="合計"
+                    position="1.0 0.85 -2"
+                    color="#33C3F0"
+                    negate="false"
+                    font="custom1-msdf.json">
+                    
                 </a-text>
-
+                                -->
 
 
                 <a-text value="box1"
-                    position="1 0.6 -2"
+                    position="1.0 0.85 -2"
                     color="#000000">
                     <!-- negate="false" -->
                     <!-- font="custom-msdf.json" -->
@@ -98,11 +109,68 @@
 
 
                 <a-text value="0"
-                    id="my_text2"
-                    position="1.5 0.6 -2"
+                    id="my_text1"
+                    position="1.55 0.85 -2"
                     color="#000000"
                     
                     >
+                </a-text>
+
+                <a-text value="box2"
+                    position="1 0.6 -2"
+                    color="#000000">
+                    <!-- negate="false" -->
+                    <!-- font="custom-msdf.json" -->
+                    
+                </a-text>
+
+                <a-text value="0"
+                    id="my_text2"
+                    position="1.55 0.6 -2"
+                    color="#000000"
+                    
+                    >
+                </a-text>
+
+                <a-text value="box3"
+                    position="1 0.35 -2"
+                    color="#000000">
+                    <!-- negate="false" -->
+                    <!-- font="custom-msdf.json" -->
+                    
+                </a-text>
+
+                <a-text value="0"
+                    id="my_text3"
+                    position="1.55 0.35 -2"
+                    color="#000000"
+                    
+                    >
+                </a-text>
+
+                <a-text value="box4"
+                    position="1 0.1 -2"
+                    color="#000000">
+                    <!-- negate="false" -->
+                    <!-- font="custom-msdf.json" -->
+                    
+                </a-text>
+
+                <a-text value="0"
+                    id="my_text4"
+                    position="1.55 0.1 -2"
+                    color="#000000"
+                    
+                    >
+                </a-text>
+
+
+
+                <!--どうして表示されないんだ。。-->
+                <a-text value="回"
+                     font="custom2-msdf.json"
+                     color="#33C3F0"
+                     negate="false">
                 </a-text>
         
             </a-camera>
@@ -225,8 +293,11 @@
 
     <script>
         // IDでmy_boxを指定、操作するための変数「box」を設定
+        const scoreText = document.getElementById("my_text");
         const scoreText1 = document.getElementById("my_text1");
         const scoreText2 = document.getElementById("my_text2");
+        const scoreText3 = document.getElementById("my_text3");
+        const scoreText4 = document.getElementById("my_text4");
         const box1 = document.getElementById("gaze1");
         const box2 = document.getElementById("gaze2");
         const box3 = document.getElementById("gaze3");
@@ -246,18 +317,20 @@
 
         var score1=0;
         var score2=0;
-        // score += 100;
+        var score3=0;
+        var score4=0;
+        var score5=0;
 
 
         box1.addEventListener("mouseleave", (e) =>{
             // box.setAttribute("scale", "1 1 1");
             // box.setAttribute("color", "#00FF00");
 
-            score1 += 20;
-            scoreText1.setAttribute("value", score1);
+            score1 += 5;
+            scoreText.setAttribute("value", score1);
 
-            score2 += 20;
-            scoreText2.setAttribute("value", score2);
+            score2 += 5;
+            scoreText1.setAttribute("value", score2);
             
         });
 
@@ -265,23 +338,46 @@
         box2.addEventListener("mouseleave", (e) =>{
             // box1.setAttribute("scale", "1 1 1");
             // box1.setAttribute("color", "#00FF00");
-            score1 += 100;
-            scoreText1.setAttribute("value", score1);
+            score1 += 10;
+            scoreText.setAttribute("value", score1);
+
+            score3 += 10;
+            scoreText2.setAttribute("value", score3);
         });
 
         box3.addEventListener("mouseleave", (e) =>{
             // box1.setAttribute("scale", "1 1 1");
             // box1.setAttribute("color", "#00FF00");
-            score1 += 100;
-            scoreText1.setAttribute("value", score1);
+            score1 += 15;
+            scoreText.setAttribute("value", score1);
+
+            score4 += 15;
+            scoreText3.setAttribute("value", score4);
+
 
         });
+
+        box3.addEventListener("click", (e) =>{
+            // box1.setAttribute("scale", "1 1 1");
+            // box1.setAttribute("color", "#00FF00");
+            score1 += 100;
+            scoreText.setAttribute("value", score1);
+
+            score4 += 100;
+            scoreText3.setAttribute("value", score4);
+
+
+        });
+
 
         box4.addEventListener("mouseleave", (e) =>{
             // box1.setAttribute("scale", "1 1 1");
             // box1.setAttribute("color", "#00FF00");
-            score1 += 100;
-            scoreText1.setAttribute("value", score1);
+            score1 += 20;
+            scoreText.setAttribute("value", score1);
+
+            score5 += 20;
+            scoreText4.setAttribute("value", score5);
 
         });
 
